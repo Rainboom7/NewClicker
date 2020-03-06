@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+
 
 public class BubbleSizing : MonoBehaviour
 {
+    public SpriteRenderer _bubbleSprite;
     private Vector3 currentScale;
-    public List<ActionBehaviour> actions;
+
     private void Rescale()
     {
-
         transform.localScale += currentScale * 0.01f;
     }
     private void OnEnable()
@@ -18,12 +20,20 @@ public class BubbleSizing : MonoBehaviour
     private void FixedUpdate()
     {
         Rescale();
-        if (transform.localScale.x >= currentScale.x * 1.5f) {
-            foreach (var action in actions)
-            {
-                action.Execute();
+        if (transform.localScale.x >= currentScale.x * 1.6f)
+        {
+            AnimateBubbleExplosion();
 
-            }
         }
     }
+    private void AnimateBubbleExplosion()
+    {
+        var seq = DOTween.Sequence();
+        seq.Append(gameObject.transform.DOScaleX(1.2f, 0.06f));
+        seq.Join(gameObject.transform.DOScaleY(1.2f, 0.06f));
+
+    }
+
 }
+
+
