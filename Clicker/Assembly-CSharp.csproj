@@ -75,8 +75,11 @@
     <Compile Include="Assets\Scripts\CounterScriptableObject.cs" />
     <Compile Include="Assets\Scripts\CounterUpdateView.cs" />
     <Compile Include="Assets\Scripts\DestroyAction.cs" />
+    <Compile Include="Assets\Scripts\GameOverAction.cs" />
+    <Compile Include="Assets\Scripts\GameOverWindow.cs" />
     <Compile Include="Assets\Scripts\OnMouseClick.cs" />
     <Compile Include="Assets\Scripts\RandomSpawner.cs" />
+    <Compile Include="Assets\Scripts\checkForGameOver.cs" />
     <None Include="Assets\Demigiant\DOTween\readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/projects/UnityClicker/Clicker/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

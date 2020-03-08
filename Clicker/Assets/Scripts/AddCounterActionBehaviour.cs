@@ -4,8 +4,8 @@ public class AddCounterActionBehaviour : ActionBehaviour
 {
 		[SerializeField]
 		private int _addScore = 1;
-		[SerializeField]
-		private CounterScriptableObject _scoreCounter;
+	
+		public CounterScriptableObject _scoreCounter;
 
     public override void Execute()
     {

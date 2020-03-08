@@ -8,25 +8,32 @@ using UnityEngine.Serialization;
 
 public class CounterScriptableObject : ScriptableObject
 {
-	[SerializeField]
-	private int _count = 0;
+    [SerializeField]
+    private int _count = 0;
 
-	public int Count => _count;
-	
+    public int Count => _count;
 
-	public event Action<int> UpdateScore;
-	public void OnEnable()
-	{
-		
-			_count = 0;
-		
-	}
 
-	public void AddValue(int count)
-	{
-		_count += count;
-		UpdateScore?.Invoke(_count);
-	}
+    public event Action<int> UpdateScore;
+    public event Action GameOver;
+    public void OnEnable()
+    {
+        _count = 0;
+        UpdateScore = null;
+        GameOver = null;
+
+    }
+    
+
+    public void AddValue(int count)
+    {
+        _count += count;
+        UpdateScore?.Invoke(_count);
+    }
+    public void  SetGameOVer(){
+        GameOver?.Invoke();
+
+    }
 
 #if UNITY_EDITOR
 	[MenuItem("Assets/Create/CounterScriptableObject")]

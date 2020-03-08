@@ -8,6 +8,7 @@ public class BubbleSizing : MonoBehaviour
 {
     public SpriteRenderer _bubbleSprite;
     private Vector3 currentScale;
+    public GameOverAction gameOverAction;
 
     private void Rescale()
     {
@@ -23,6 +24,7 @@ public class BubbleSizing : MonoBehaviour
         if (transform.localScale.x >= currentScale.x * 1.6f)
         {
             AnimateBubbleExplosion();
+            gameOverAction?.Execute();
 
         }
     }

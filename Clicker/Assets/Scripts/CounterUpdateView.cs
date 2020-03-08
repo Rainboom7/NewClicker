@@ -3,23 +3,35 @@ using UnityEngine.UI;
 
 public class CounterUpdateView : MonoBehaviour
 {
-	[SerializeField]
-	private Text _countText;
-	[SerializeField]
-private CounterScriptableObject _counterScriptableObject;
+    
+    public  Text _countText;
+    [SerializeField]
+    private CounterScriptableObject _counterScriptableObject;
+    static private bool _gameOver = false;
+    private void Start()
+    {
+        _counterScriptableObject.OnEnable();
+       _counterScriptableObject.UpdateScore += UpdateCounter;
+        _counterScriptableObject.GameOver += GameOver;
+    }
 
-	private void Awake()
-	{
-		_counterScriptableObject.UpdateScore += UpdateCounter;
-	}
+    private void OnEnable()
+    {
 
-	private void OnEnable()
-	{
-		UpdateCounter(_counterScriptableObject.Count);
-	}
+        _gameOver = false;
+        UpdateCounter(_counterScriptableObject.Count);
+    }
 
-	private void UpdateCounter(int count)
-	{
-		_countText.text = count.ToString();
-	}
+    private  void UpdateCounter(int count)
+    {
+        _countText.text = count.ToString();
+    }
+    public void GameOver()
+    {
+           _gameOver = true;
+    }
+    public bool GameIsOver() {
+        return _gameOver;
+    }
+
 }
