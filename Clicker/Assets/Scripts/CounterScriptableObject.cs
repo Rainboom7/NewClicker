@@ -20,6 +20,11 @@ namespace Counter
         public event Action GameOver;
         public void OnEnable()
         {
+            ResetCounter();
+
+        }
+        public void ResetCounter()
+        {
             _count = 0;
             UpdateScore = null;
             GameOver = null;

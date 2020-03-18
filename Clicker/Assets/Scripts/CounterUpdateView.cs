@@ -12,14 +12,13 @@ namespace Counter
         static private bool _gameOver = false;
         private void Start()
         {
-            _counterScriptableObject.OnEnable();
+            _counterScriptableObject.ResetCounter();
             _counterScriptableObject.UpdateScore += UpdateCounter;
             _counterScriptableObject.GameOver += GameOver;
         }
 
         private void OnEnable()
         {
-
             _gameOver = false;
             UpdateCounter(_counterScriptableObject.Count);
         }
