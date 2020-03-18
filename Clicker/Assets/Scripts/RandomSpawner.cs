@@ -6,10 +6,7 @@ namespace RandomSpawner
 
     public class RandomSpawner : MonoBehaviour
     {
-        private Vector3 Min;
-        private float _x;
-        private float _y;
-        private float _z;
+        private Vector3 Min
         private Vector3 _randomPosition;
         private Vector3 Max;
         public float _centerDistanceX;
@@ -34,9 +31,9 @@ namespace RandomSpawner
         }
         private void RandomInstantiate()
         {
-            _x = Random.Range(Min.x, Max.x);
-            _y = Random.Range(Min.y, Max.y);
-            _z = 0;
+            float _x = Random.Range(Min.x, Max.x);
+            float _y = Random.Range(Min.y, Max.y);
+            float _z = 0;
             _randomPosition = new Vector3(_x, _y, _z);
             Instantiate(bubble, _randomPosition, Quaternion.identity);
 
