@@ -653,10 +653,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048898adb7dac034599fe906ef0c7c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _centerDistanceX: 4
-  _centerDistanceY: 4
-  spawntime: 1
-  bubble: {fileID: 2207021284733808987, guid: 92693b899e83ee945b48ccb53aead1e5, type: 3}
+  CenterDistanceX: 4
+  CenterDistanceY: 4
+  SpawnTime: 2
+  Bubble: {fileID: 2207021284733808987, guid: 92693b899e83ee945b48ccb53aead1e5, type: 3}
 --- !u!114 &1293434173 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 443180208933109430, guid: 874d704421f946347840adb9e12e73b6,

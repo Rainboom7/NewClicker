@@ -6,36 +6,41 @@ namespace RandomSpawner
 
     public class RandomSpawner : MonoBehaviour
     {
-        private Vector3 Min
+        private Vector3 _min;
         private Vector3 _randomPosition;
-        private Vector3 Max;
-        public float _centerDistanceX;
-        public float _centerDistanceY;
-        public float spawntime;
-        public GameObject bubble;
-        // Start is called before the first frame update
+        private Vector3 _max;
+        public float CenterDistanceX;
+        public float CenterDistanceY;
+        public float SpawnTime;
+        public GameObject Bubble;
+        private float _timer;
         void Start()
         {
             setRanges();
-            InvokeRepeating("RandomInstantiate", spawntime, spawntime);
-
-
         }
+        private void FixedUpdate()
+        {
+            _timer -= Time.fixedDeltaTime;
 
-        // Update is called once per frame
+            if (_timer > 0)
+                return;
+
+            _timer += SpawnTime;
+            RandomInstantiate();
+        }
 
         private void setRanges()
         {
-            Min = gameObject.transform.position - new Vector3(_centerDistanceX, _centerDistanceY, 0);
-            Max = gameObject.transform.position + new Vector3(_centerDistanceX, _centerDistanceY, 0);
+            _min = gameObject.transform.position - new Vector3(CenterDistanceX, CenterDistanceY, 0);
+            _max = gameObject.transform.position + new Vector3(CenterDistanceX, CenterDistanceY, 0);
         }
         private void RandomInstantiate()
         {
-            float _x = Random.Range(Min.x, Max.x);
-            float _y = Random.Range(Min.y, Max.y);
+            float _x = Random.Range(_min.x, _max.x);
+            float _y = Random.Range(_min.y, _max.y);
             float _z = 0;
             _randomPosition = new Vector3(_x, _y, _z);
-            Instantiate(bubble, _randomPosition, Quaternion.identity);
+            Instantiate(Bubble, _randomPosition, Quaternion.identity);
 
         }
     }
