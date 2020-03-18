@@ -2,40 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
-
-public class BubbleSizing : MonoBehaviour
+using ActionBehaviour;
+namespace BubbleSizing
 {
-    public SpriteRenderer _bubbleSprite;
-    private Vector3 currentScale;
-    public GameOverAction gameOverAction;
 
-    private void Rescale()
+
+    public class BubbleSizing : MonoBehaviour
     {
-        transform.localScale += currentScale * 0.01f;
-    }
-    private void OnEnable()
-    {
-        currentScale = transform.localScale;
-    }
-    private void FixedUpdate()
-    {
-        Rescale();
-        if (transform.localScale.x >= currentScale.x * 1.6f)
+        public SpriteRenderer BubbleSprite;
+        private Vector3 _currentScale;
+        public GameOverAction GameOverAction;
+
+        private void Rescale()
         {
-            AnimateBubbleExplosion();
-            gameOverAction?.Execute();
+            transform.localScale += _currentScale * 0.01f;
+        }
+        private void OnEnable()
+        {
+            _currentScale = transform.localScale;
+        }
+        private void FixedUpdate()
+        {
+            Rescale();
+            if (transform.localScale.x >= _currentScale.x * 1.6f)
+            {
+                AnimateBubbleExplosion();
+                GameOverAction?.Execute();
+
+            }
+        }
+        private void AnimateBubbleExplosion()
+        {
+            var seq = DOTween.Sequence();
+            seq.Append(gameObject.transform.DOScaleX(1.2f, 0.06f));
+            seq.Join(gameObject.transform.DOScaleY(1.2f, 0.06f));
 
         }
-    }
-    private void AnimateBubbleExplosion()
-    {
-        var seq = DOTween.Sequence();
-        seq.Append(gameObject.transform.DOScaleX(1.2f, 0.06f));
-        seq.Join(gameObject.transform.DOScaleY(1.2f, 0.06f));
 
     }
-
 }
 
 

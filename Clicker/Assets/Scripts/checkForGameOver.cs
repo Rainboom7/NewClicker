@@ -1,21 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class checkForGameOver : MonoBehaviour
+using GameOverWindow;
+namespace Counter
 {
-    public CounterUpdateView counterUpdateView;
-    public GameOverWindow GameOverWindow;
-    // Start is called before the first frame update
-    private void Start()
+
+    public class checkForGameOver : MonoBehaviour
     {
-        GameOverWindow.gameObject.SetActive(false);
+        public CounterUpdateView CounterUpdateView;
+        public GameOverWindow.GameOverWindow GameOverWindow;
+        // Start is called before the first frame update
+        private void Start()
+        {
+            GameOverWindow.gameObject.SetActive(false);
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (CounterUpdateView.GameIsOver())
+                GameOverWindow.Show();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (counterUpdateView.GameIsOver())
-            GameOverWindow.Show();
-    }
 }

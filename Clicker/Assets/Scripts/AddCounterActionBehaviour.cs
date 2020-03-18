@@ -1,15 +1,19 @@
 using UnityEngine;
-
-public class AddCounterActionBehaviour : ActionBehaviour
+using Counter;
+namespace ActionBehaviour
 {
-		[SerializeField]
-		private int _addScore = 1;
-	
-		public CounterScriptableObject _scoreCounter;
 
-    public override void Execute()
+    public class AddCounterActionBehaviour : ActionBehaviour
     {
-        _scoreCounter.AddValue(_addScore);
-    }
+        [SerializeField]
+        private int _addScore = 1;
 
+        public CounterScriptableObject _scoreCounter;
+
+        public override void Execute()
+        {
+            _scoreCounter.AddValue(_addScore);
+        }
+
+    }
 }

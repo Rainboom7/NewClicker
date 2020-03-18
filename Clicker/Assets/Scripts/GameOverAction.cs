@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class GameOverAction : ActionBehaviour
+using Counter;
+namespace ActionBehaviour
 {
-  
-    public CounterScriptableObject _scoreCounter;
 
-    public override void Execute()
+    public class GameOverAction : ActionBehaviour
     {
 
-        _scoreCounter.SetGameOVer() ;
+        public CounterScriptableObject ScoreCounter;
+
+        public override void Execute()
+        {
+
+            ScoreCounter.SetGameOVer();
+        }
     }
 }
