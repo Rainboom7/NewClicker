@@ -36,10 +36,10 @@ namespace RandomSpawner
         }
         private void RandomInstantiate()
         {
-            float _x = Random.Range(_min.x, _max.x);
-            float _y = Random.Range(_min.y, _max.y);
-            float _z = 0;
-            _randomPosition = new Vector3(_x, _y, _z);
+            float x = Random.Range(_min.x, _max.x);
+            float y = Random.Range(_min.y, _max.y);
+            float z = 0;
+            _randomPosition = new Vector3(x, y, z);
             Instantiate(Bubble, _randomPosition, Quaternion.identity);
 
         }
