@@ -12,7 +12,8 @@ namespace RandomSpawner
         public float CenterDistanceX;
         public float CenterDistanceY;
         public float SpawnTime;
-        public GameObject Bubble;
+        [SerializeField]
+        private GameObject Bubble;
         private float _timer;
         void Start()
         {
