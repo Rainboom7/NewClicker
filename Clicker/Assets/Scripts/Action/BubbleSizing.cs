@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using ActionBehaviour;
-namespace BubbleSizing
+using System;
+
+namespace ActionBehaviour
 {
 
 
@@ -11,7 +13,8 @@ namespace BubbleSizing
     {
         public SpriteRenderer BubbleSprite;
         private Vector3 _currentScale;
-        public GameOverAction GameOverAction;
+        [SerializeField]
+        private Controller.GameController _gameController;
 
         private void Rescale()
         {
@@ -20,6 +23,7 @@ namespace BubbleSizing
         private void OnEnable()
         {
             _currentScale = transform.localScale;
+      
         }
         private void FixedUpdate()
         {
@@ -27,7 +31,8 @@ namespace BubbleSizing
             if (transform.localScale.x >= _currentScale.x * 1.6f)
             {
                 AnimateBubbleExplosion();
-                GameOverAction?.Execute();
+                _gameController.OnPlayerDead();
+                   
 
             }
         }

@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-namespace GameOverWindow
+namespace View
 {
 
     public class GameOverWindow : MonoBehaviour
     {
 
         [SerializeField]
-        private Text _scoreText;
+        private Counter.CounterUpdateView _counter;
 
-
-        public void Show()
+        public void Show(int Count)
         {
+            _counter.UpdateCounter(Count);
             gameObject.SetActive(true);
         }
         private void Awake()
