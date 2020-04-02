@@ -11,6 +11,7 @@ namespace Controller {
         public event Action<int> ChangeScoreEvent;
         private int _score;
         private View.GameView _view;
+                
 
         public void AddScore(int value)
         {
@@ -41,7 +42,7 @@ namespace Controller {
         }
 
         public void OnPlayerDead()
-        {
+        { 
             _view?.StopGame();
         }
 

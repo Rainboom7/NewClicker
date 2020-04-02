@@ -26,6 +26,7 @@ namespace RandomSpawner
         {
             get
             {
+                setRanges();
                 yield return new WaitForSeconds(SpawnTime);
                 while (true)
                 {

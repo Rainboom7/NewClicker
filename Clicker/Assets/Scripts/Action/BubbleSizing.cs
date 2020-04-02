@@ -11,37 +11,35 @@ namespace ActionBehaviour
 
     public class BubbleSizing : MonoBehaviour
     {
-        public SpriteRenderer BubbleSprite;
-        private Vector3 _currentScale;
+        [SerializeField]
+        private float _timer=0;
         [SerializeField]
         private Controller.GameController _gameController;
+        public bool GameOver = false;
+        private Animator _animator;
+        private bool isCoroutineExecuting=false;
 
-        private void Rescale()
+        private void Start()
         {
-            transform.localScale += _currentScale * 0.01f;
+            _animator = GetComponent<Animator>();
         }
-        private void OnEnable()
-        {
-            _currentScale = transform.localScale;
-      
-        }
+
         private void FixedUpdate()
         {
-            Rescale();
-            if (transform.localScale.x >= _currentScale.x * 1.6f)
-            {
-                AnimateBubbleExplosion();
-                _gameController.OnPlayerDead();
-                   
-
-            }
+            if (_timer > 0)
+                _timer -= Time.deltaTime;
+            else { StartCoroutine(ExecuteAfterTime(0.5f, _gameController.OnPlayerDead));
+                _animator.SetBool("GameOver", true); }
+           
         }
-        private void AnimateBubbleExplosion()
+        IEnumerator ExecuteAfterTime(float time, Action task)
         {
-            var seq = DOTween.Sequence();
-            seq.Append(gameObject.transform.DOScaleX(1.2f, 0.06f));
-            seq.Join(gameObject.transform.DOScaleY(1.2f, 0.06f));
-
+            if (isCoroutineExecuting)
+                yield break;
+            isCoroutineExecuting = true;
+            yield return new WaitForSeconds(time);
+            task();
+            isCoroutineExecuting = false;
         }
 
     }

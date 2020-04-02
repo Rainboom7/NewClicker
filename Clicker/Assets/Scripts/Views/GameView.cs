@@ -39,6 +39,7 @@ namespace View
 
         public void StartGame()
         {
+            
             _spawnRoutine = StartCoroutine(_randomSpawner.SpawnRoutine);
             _score.Show();
         }
