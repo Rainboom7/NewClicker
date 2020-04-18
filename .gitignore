@@ -1,5 +1,5 @@
-Clicker/Library/
-Clicker/Logs/
-Clicker/Packages/
-Clicker/Temp/
-*.meta
+Clicker/Library/**
+Clicker/Logs/**
+Clicker/Packages/**
+Clicker/Temp/**
+obj/**
